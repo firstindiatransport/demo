@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -25,8 +26,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     super.initState();
     _model = createModel(context, () => HomePageModel());
 
-    _model.textController ??= TextEditingController(text: 'Enter AWS No.');
+    _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
+    _model.switchValue = true;
   }
 
   @override
@@ -52,7 +55,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 10.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 10.0, 10.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -71,7 +74,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       child: Icon(
                         Icons.close_rounded,
                         color: FlutterFlowTheme.of(context).primaryText,
-                        size: 30.0,
+                        size: 35.0,
                       ),
                     ),
                   ],
@@ -125,46 +128,67 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 10.0, 15.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      'Home',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Plus Jakarta Sans',
-                            fontSize: 22.0,
-                            letterSpacing: 0.0,
-                          ),
-                    ),
-                  ],
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    if (scaffoldKey.currentState!.isDrawerOpen ||
+                        scaffoldKey.currentState!.isEndDrawerOpen) {
+                      Navigator.pop(context);
+                    }
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        'Home',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Plus Jakarta Sans',
+                              fontSize: 22.0,
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Container(
                 width: double.infinity,
-                height: 2.0,
+                height: 1.0,
                 decoration: BoxDecoration(
                   color: Colors.black,
                 ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 10.0, 15.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      'Tracking',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Plus Jakarta Sans',
-                            fontSize: 22.0,
-                            letterSpacing: 0.0,
-                          ),
-                    ),
-                  ],
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed('TrackingPage');
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        'Tracking',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Plus Jakarta Sans',
+                              fontSize: 22.0,
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Container(
                 width: double.infinity,
-                height: 2.0,
+                height: 1.0,
                 decoration: BoxDecoration(
                   color: Colors.black,
                 ),
@@ -187,7 +211,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
               Container(
                 width: double.infinity,
-                height: 2.0,
+                height: 1.0,
                 decoration: BoxDecoration(
                   color: Colors.black,
                 ),
@@ -210,55 +234,143 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
               Container(
                 width: double.infinity,
-                height: 2.0,
+                height: 1.0,
                 decoration: BoxDecoration(
                   color: Colors.black,
                 ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 10.0, 15.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      'Terms & Conditions',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Plus Jakarta Sans',
-                            fontSize: 22.0,
-                            letterSpacing: 0.0,
-                          ),
-                    ),
-                  ],
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed('TermsConditions');
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        'Terms & Conditions',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Plus Jakarta Sans',
+                              fontSize: 22.0,
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Container(
                 width: double.infinity,
-                height: 2.0,
+                height: 1.0,
                 decoration: BoxDecoration(
                   color: Colors.black,
                 ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10.0, 15.0, 10.0, 15.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      'Privacy Policy',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Plus Jakarta Sans',
-                            fontSize: 22.0,
-                            letterSpacing: 0.0,
-                          ),
-                    ),
-                  ],
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed('PrivacyPolicy');
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        'Privacy Policy',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Plus Jakarta Sans',
+                              fontSize: 22.0,
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Container(
                 width: double.infinity,
-                height: 2.0,
+                height: 1.0,
                 decoration: BoxDecoration(
                   color: Colors.black,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 250.0, 0.0, 20.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          GoRouter.of(context).prepareAuthEvent();
+                          await authManager.signOut();
+                          GoRouter.of(context).clearRedirectLocation();
+
+                          context.goNamedAuth('Onboarding', context.mounted);
+                        },
+                        text: 'Logout',
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 16.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
+                                  ),
+                          elevation: 0.0,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Icon(
+                          Icons.dark_mode,
+                          color: FlutterFlowTheme.of(context).secondary,
+                          size: 34.0,
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 10.0, 0.0),
+                          child: Switch.adaptive(
+                            value: _model.switchValue!,
+                            onChanged: (newValue) async {
+                              safeSetState(
+                                  () => _model.switchValue = newValue);
+                              if (newValue) {
+                                setDarkModeSetting(context, ThemeMode.system);
+                              }
+                            },
+                            activeColor: FlutterFlowTheme.of(context).primary,
+                            activeTrackColor:
+                                FlutterFlowTheme.of(context).primary,
+                            inactiveTrackColor:
+                                FlutterFlowTheme.of(context).alternate,
+                            inactiveThumbColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -288,6 +400,27 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
+                  Text(
+                    'Hello, ',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Plus Jakarta Sans',
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          fontSize: 16.0,
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                  AuthUserStreamWidget(
+                    builder: (context) => Text(
+                      currentUserDisplayName,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Plus Jakarta Sans',
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            fontSize: 18.0,
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -368,8 +501,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       enableInfiniteScroll: true,
                       scrollDirection: Axis.horizontal,
                       autoPlay: true,
-                      autoPlayAnimationDuration: Duration(milliseconds: 1200),
-                      autoPlayInterval: Duration(milliseconds: (1200 + 1500)),
+                      autoPlayAnimationDuration: Duration(milliseconds: 1000),
+                      autoPlayInterval: Duration(milliseconds: (1000 + 1300)),
                       autoPlayCurve: Curves.linear,
                       pauseAutoPlayInFiniteScroll: true,
                       onPageChanged: (index, _) =>
@@ -491,8 +624,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    context.pushNamed('CargoPage');
                   },
                   text: 'Check Rates',
                   options: FFButtonOptions(
@@ -554,7 +687,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     fontFamily: 'Plus Jakarta Sans',
                                     letterSpacing: 0.0,
                                   ),
-                              hintText: 'TextField',
+                              hintText: 'Enter AWS No.',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
@@ -613,8 +746,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    context.pushNamed('TrackingPage');
                   },
                   text: 'Trace Order',
                   options: FFButtonOptions(

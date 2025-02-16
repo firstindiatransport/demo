@@ -21,6 +21,8 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // State field(s) for Switch widget.
+  bool? switchValue;
 
   @override
   void initState(BuildContext context) {}

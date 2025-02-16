@@ -102,6 +102,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Login',
           path: '/login',
           builder: (context, params) => LoginWidget(),
+        ),
+        FFRoute(
+          name: 'PrivacyPolicy',
+          path: '/privacyPolicy',
+          builder: (context, params) => PrivacyPolicyWidget(),
+        ),
+        FFRoute(
+          name: 'TermsConditions',
+          path: '/termsConditions',
+          builder: (context, params) => TermsConditionsWidget(),
+        ),
+        FFRoute(
+          name: 'TrackingPage',
+          path: '/trackingPage',
+          builder: (context, params) => TrackingPageWidget(),
+        ),
+        FFRoute(
+          name: 'CargoPage',
+          path: '/cargoPage',
+          builder: (context, params) => CargoPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
